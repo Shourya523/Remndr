@@ -37,6 +37,12 @@ function App() {
       e.preventDefault(); // prevent new line
       handleAddTask();
     }
+  }
+  const handleKeyDownPopUp = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // prevent new line
+      setPopup(false);
+    }
   };
   const toggleTask = (index) => {
     setTasks((prevTasks) =>
@@ -52,6 +58,7 @@ function App() {
         <PopUp
           onClose={() => setPopup(false)}
           onTypingName={(e) => setName(e.target.value)}
+          onKeyDown={handleKeyDownPopUp}
         />
       )}
       <div className="sidebar-bg">

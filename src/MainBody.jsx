@@ -2,7 +2,7 @@ function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask,greetings
 
     return (
         <div className="main-body">
-            <h2>{greetings}  {name}</h2>
+            <h2>{greetings}  {name} !</h2>
             <div className="main-body-input">
                 <textarea
                     placeholder="Enter your Task"

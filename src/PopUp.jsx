@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.css'
-function PopUp({ onClose ,  onTypingName }) {
+function PopUp({ onClose ,  onTypingName, onKeyDown }) {
     return (
         <>
             <div className="pop-up">
@@ -12,6 +12,7 @@ function PopUp({ onClose ,  onTypingName }) {
                         className="input-box-pop-up"
                         required
                         onChange={onTypingName}
+                        onKeyDown={onKeyDown}
                     />
                     <button onClick={onClose} className="button-pop-up">
                         Continue
