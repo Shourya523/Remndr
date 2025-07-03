@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
 body{
-  background: linear-gradient(60deg,hsl(0 0 5),hsl( 0 0 10), hsl(0 0 25)) ;
+  background: linear-gradient(45deg,hsl(0 0 5),hsl( 0 0 10), hsl(0 0 25)) ;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  background-image: url('./assets/to-do-body-background.jpg');
+  background-size: cover;
 }
 .pop-up
 {
@@ -26,7 +28,7 @@ body{
   height: auto;
   max-height: 80vh;
   padding: 2em;
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent glassy */
+  background: hsla(0 0 60 0.3); /* semi-transparent glassy */
   backdrop-filter: blur(15px);
   color: white;
   border-radius: 16px;
@@ -69,26 +71,14 @@ h1{
   color: hsl(0 0 95);
   text-align:center;
 }
-/* .sidebar-bg {
-  background-image: url('./assets/to-do-navbar-background.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 30vw;
-  position: fixed; 
-  filter: grayscale(100%) opacity(10%);
-  top:0;
-  left:0;
-  z-index: 0; 
-} */
-
 .sidebar {
   /* display: flex; */
   /* justify-content: left; */
   padding-left: 2em;
   padding-right: 2em;
   /* align-content: space-evenly; */
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: opacity(10px);
   overflow: hidden;
   position: fixed;
   height: 100vh;
@@ -98,7 +88,7 @@ h1{
   left:0;
   color: white;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
+  /* text-align: center; */
 }
 ul{
   list-style: none;
