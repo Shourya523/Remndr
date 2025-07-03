@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
 body{
   background: linear-gradient(60deg,hsl(0 0 5),hsl( 0 0 10), hsl(0 0 25)) ;
-  font-family: 'Fira Code', monospace;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 .pop-up
 {
@@ -67,7 +67,7 @@ body{
 }
 h1{
   color: hsl(0 0 95);
-  text-align:center;
+  /* text-align:center; */
 }
 /* .sidebar-bg {
   background-image: url('./assets/to-do-navbar-background.jpg');
@@ -98,7 +98,7 @@ h1{
   left:0;
   color: white;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: left;
+  text-align: center;
 }
 ul{
   list-style: none;
@@ -119,6 +119,12 @@ ul{
   flex-direction: column; /* stack children vertically */
   /* padding: 1em; */
   box-sizing: border-box;
+  text-align: left;
+  padding-left: 2em;
+  padding-top: .4em;
+}
+h2{
+  color: hsl(0 0 60);
 }
 .main-body-input
 {
@@ -146,5 +152,6 @@ textarea {
   color: hsl(0, 0%, 70%);
   font-size: 1em;
   box-sizing: border-box; /* ✅ Includes padding in width */
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 

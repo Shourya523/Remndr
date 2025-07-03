@@ -7,6 +7,7 @@ import PopUp from './PopUp'
 function App() {
   const [name, setName] = useState("");
   const [popup, setPopup] = useState(true);
+  const[task,setTask]=useState("");
   return (
     <>
       {popup && (
