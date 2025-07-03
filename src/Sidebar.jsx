@@ -5,7 +5,7 @@ function Sidebar({tasks,name})
     return (
         <>
         <div className="sidebar"> 
-            <h1>Hi {name}</h1>
+            <h1>Remndr</h1><hr />
             <ul className='Task-list'>
                 <li className='My-Tasks'>My Tasks</li>
                 <div className="task-columns">

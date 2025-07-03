@@ -78,6 +78,7 @@ body {
 h1 {
   color: hsl(0 0 95);
   text-align: center;
+  margin-bottom: .5em;
 }
 
 .sidebar {
@@ -107,9 +108,10 @@ h1 {
   border-radius: 5px;
   height: 76.5vh;
   margin-right: 1.5em;
-  margin-top:1.5em;
-  padding-top: .5em;
+  margin-top:1em;
+  padding-top: .75em;
   padding-left: 1.5em;
+  font-size: 1em;
 }
 .Sidebar-list
 {
@@ -122,9 +124,9 @@ h1 {
 }
 .Task-list
 {
-  margin-top: 2em;
+  margin-top: 1em;
   left:0px;
-  padding-left: 1.5em;
+  padding-left: 1em;
 }
 .My-Tasks{
   padding-left: .5em;
@@ -232,7 +234,7 @@ textarea {
 }
 .Main-body-task
 {
-  margin-top:3.75em;
+  margin-top:3.35em;
 }
 /* Hide native checkbox */
 .custom-checkbox input.Todo-checkbox {
@@ -280,4 +282,10 @@ textarea {
   margin-top: 10em;
   font-style: italic;
   font-size: 1.5em;
+}
+hr{
+  height: 1px;
+  border: none;
+  background-color: hsl(0 0 30);
+  margin-top: 0em;
 }
