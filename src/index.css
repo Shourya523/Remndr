@@ -9,7 +9,7 @@ body {
 
 .pop-up {
   color: hsl(0 0 80);
-  background-color: hsla(0 0 90 0.005);
+  background-color: hsla(0 0 90 0.5);
   backdrop-filter: blur(5px);
   width: 100vw;
   height: 100vh;
@@ -30,7 +30,7 @@ body {
   height: auto;
   max-height: 80vh;
   padding: 2em;
-  background: hsla(0 0 60 0.3);
+  background: hsla(0 0 60 0.2);
   /* semi-transparent glassy */
   backdrop-filter: blur(15px);
   color: white;
@@ -83,15 +83,15 @@ h1 {
 .sidebar {
   /* display: flex; */
   /* justify-content: left; */
-  padding-left: 2em;
-  padding-right: 2em;
+  /* padding-left: 1em;
+  padding-right: 1em; */
   /* align-content: space-evenly; */
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: opacity(10px);
   overflow: hidden;
   position: fixed;
   height: 100vh;
-  width: 15vw;
+  width: 20vw;
   /* z-index: 1; */
   top: 0;
   left: 0;
@@ -99,13 +99,36 @@ h1 {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   /* text-align: center; */
 }
+.task-columns
+{
+  background-color: hsla(0, 0%, 10%, 0.2);
+  backdrop-filter: blur(4px);
+  border: 0.5px solid hsla(0, 0%, 80%, 0.2);
+  border-radius: 5px;
+  height: 76vh;
+  margin-right: 1.5em;
+  margin-top:1.5em;
+  padding-top: .5em;
+  padding-left: 1.5em;
+}
+.Sidebar-list
+{
+  padding-bottom: 1em;
+  list-style: circle;
+}
+.Task-list
+{
+  margin-top: 2em;
+  left:0px;
+  padding-left: 1.5em;
+}
 
 ul {
   list-style: none;
   /* text-align: left; */
   padding-left: 0.2rem;
-  padding-top: 3em;
-  color: hsl(0 0 70);
+  /* padding-top: 3em; */
+  color: hsl(0 0 80);
 }
 
 .main-body {
@@ -124,10 +147,28 @@ ul {
   text-align: left;
   padding-left: 2em;
   padding-top: .4em;
+  /* overflow-y: scroll; */
+  z-index: 0;
 }
-
+.task-list-scrollable
+{
+  z-index: -1;
+  overflow-y: scroll;
+  height: 77.5vh;
+}
+.task-list-scrollable::-webkit-scrollbar
+{
+  background-color: transparent;
+  width: .5em;
+}
+.task-list-scrollable::-webkit-scrollbar-thumb
+{
+  background-color: hsla(0, 0%, 50%,0.3);
+  border-radius: 5px;
+  width: 1rem;
+}
 h2 {
-  color: hsl(0 0 60);
+  color: hsl(0 0 70);
 }
 
 .main-body-input {
@@ -178,9 +219,14 @@ textarea {
   box-sizing: border-box;
   /* ✅ Includes padding in width */
   font-family: 'Plus Jakarta Sans', sans-serif;
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1em; */
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
-
+.Main-body-task
+{
+  margin-top:2.75em;
+}
 /* Hide native checkbox */
 .custom-checkbox input.Todo-checkbox {
   position: absolute;

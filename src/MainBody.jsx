@@ -11,7 +11,8 @@ function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask }) {
                 />
             </div>
 
-            <ul>
+            <div className="task-list-scrollable">
+                <ul className="Main-body-task">
                 {tasks.map((t, i) => (
                     <li key={i} className="todo-lists">
                         <label className="custom-checkbox">
@@ -30,6 +31,7 @@ function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask }) {
                     </li>
                 ))}
             </ul>
+            </div>
         </div>
     );
 }

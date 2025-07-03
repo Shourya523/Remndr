@@ -1,14 +1,22 @@
 import './index.css'
-function Sidebar(props)
+function Sidebar({tasks,name})
 {
 
     return (
         <>
         <div className="sidebar"> 
-            <h1>Hi {props.name}</h1>
-            <ul>
-                <li>To-do</li>
-                <ul className='To-do-items'></ul>
+            <h1>Hi {name}</h1>
+            <ul className='Task-list'>
+                <li>My Tasks</li>
+                <div className="task-columns">
+                    <ul className='To-do-items'>
+                    {tasks.map((t,i)=>(
+                        <li key={i} className='Sidebar-list'>
+                            {t.text}
+                        </li>
+                    ))}
+                </ul>
+                </div>
             </ul>  
         </div>
         </>

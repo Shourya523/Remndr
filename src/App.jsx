@@ -42,7 +42,7 @@ function App() {
         />
       )}
       <div className="sidebar-bg">
-        <Sidebar name={name} />
+        <Sidebar name={name} tasks={tasks} />
       </div>
       <MainBody name={name}
         task={task}
