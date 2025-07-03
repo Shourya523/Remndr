@@ -105,7 +105,7 @@ h1 {
   backdrop-filter: blur(4px);
   border: 0.5px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 5px;
-  height: 76vh;
+  height: 76.5vh;
   margin-right: 1.5em;
   margin-top:1.5em;
   padding-top: .5em;
@@ -121,6 +121,9 @@ h1 {
   margin-top: 2em;
   left:0px;
   padding-left: 1.5em;
+}
+.My-Tasks{
+  padding-left: .5em;
 }
 
 ul {
@@ -225,7 +228,7 @@ textarea {
 }
 .Main-body-task
 {
-  margin-top:2.75em;
+  margin-top:3.75em;
 }
 /* Hide native checkbox */
 .custom-checkbox input.Todo-checkbox {
@@ -266,4 +269,11 @@ textarea {
 /* Hide checkmark when unchecked */
 .custom-checkbox .checkmark::after {
   display: none;
+}
+.no-task-message {
+  color: hsl(0, 0%, 60%);
+  text-align: center;
+  margin-top: 10em;
+  font-style: italic;
+  font-size: 1.5em;
 }

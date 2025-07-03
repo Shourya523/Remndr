@@ -7,7 +7,7 @@ function Sidebar({tasks,name})
         <div className="sidebar"> 
             <h1>Hi {name}</h1>
             <ul className='Task-list'>
-                <li>My Tasks</li>
+                <li className='My-Tasks'>My Tasks</li>
                 <div className="task-columns">
                     <ul className='To-do-items'>
                     {tasks.map((t,i)=>(
