@@ -1,47 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
-body{
-  background: linear-gradient(45deg,hsl(0 0 5),hsl( 0 0 10), hsl(0 0 25)) ;
+body {
+  background: linear-gradient(45deg, hsl(0 0 5), hsl(0 0 10), hsl(0 0 25));
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-image: url('./assets/to-do-body-background.jpg');
   background-size: cover;
 }
-.pop-up
-{
-  color:hsl(0 0 80);
+
+.pop-up {
+  color: hsl(0 0 80);
   background-color: hsla(0 0 90 0.005);
   backdrop-filter: blur(5px);
   width: 100vw;
   height: 100vh;
-  top:0;
-  left:0;
-  position:fixed;
+  top: 0;
+  left: 0;
+  position: fixed;
   z-index: 1000;
 }
+
 .pop-up-modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* centers the modal */
+  transform: translate(-50%, -50%);
+  /* centers the modal */
   width: 400px;
   max-width: 90vw;
   height: auto;
   max-height: 80vh;
   padding: 2em;
-  background: hsla(0 0 60 0.3); /* semi-transparent glassy */
+  background: hsla(0 0 60 0.3);
+  /* semi-transparent glassy */
   backdrop-filter: blur(15px);
   color: white;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   z-index: 1000;
-  overflow-y: auto; /* allows scroll if content exceeds height */
+  overflow-y: auto;
+  /* allows scroll if content exceeds height */
   box-sizing: border-box;
 }
+
 .input-box-pop-up {
   width: 100%;
   padding: 0.75em 1em;
   margin-top: 1em;
-  background-color: hsla(0, 0%, 15%, 0.3); 
+  background-color: hsla(0, 0%, 15%, 0.3);
   backdrop-filter: blur(8px);
   border: 1px solid hsl(0, 0%, 60%);
   border-radius: 10px;
@@ -51,10 +56,12 @@ body{
   outline: none;
   display: inline;
 }
+
 .button-pop-up {
   padding: 0.6em 1.5em;
   margin-top: 1.5em;
-  background: rgba(255, 255, 255, 0.1); /* frosted glass feel */
+  background: rgba(255, 255, 255, 0.1);
+  /* frosted glass feel */
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   color: hsl(0, 0%, 90%);
@@ -63,42 +70,46 @@ body{
   cursor: pointer;
   backdrop-filter: blur(10px);
   /* transition: all 0.2s ease; */
-   display: block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
-h1{
+
+h1 {
   color: hsl(0 0 95);
-  text-align:center;
+  text-align: center;
 }
+
 .sidebar {
   /* display: flex; */
   /* justify-content: left; */
   padding-left: 2em;
   padding-right: 2em;
   /* align-content: space-evenly; */
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: opacity(10px);
   overflow: hidden;
   position: fixed;
   height: 100vh;
   width: 15vw;
   /* z-index: 1; */
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   color: white;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   /* text-align: center; */
 }
-ul{
+
+ul {
   list-style: none;
   /* text-align: left; */
   padding-left: 0.2rem;
   padding-top: 3em;
   color: hsl(0 0 70);
 }
-.main-body{
-  border: 1px solid rgb(153, 153, 153,0.1);
+
+.main-body {
+  /* border: 1px solid rgb(153, 153, 153,0.1); */
   border-radius: 5px;
   width: 80.5vw;
   position: fixed;
@@ -106,42 +117,107 @@ ul{
   top: 0;
   height: 100vh;
   display: flex;
-  flex-direction: column; /* stack children vertically */
+  flex-direction: column;
+  /* stack children vertically */
   /* padding: 1em; */
   box-sizing: border-box;
   text-align: left;
   padding-left: 2em;
   padding-top: .4em;
 }
-h2{
+
+h2 {
   color: hsl(0 0 60);
 }
-.main-body-input
-{
+
+.main-body-input {
   width: 75vw;
   left: 22.5vw;
-  height: 5em ;
+  height: 5em;
   position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: end;
   bottom: 2em;
 }
+
 textarea {
   background-color: hsla(0, 0%, 15%, 0.2);
   backdrop-filter: blur(4px);
-  border: 0.5px solid hsla(0, 0%, 80%,0.2);
+  border: 0.5px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 5px;
-  width: 100%; /* ✅ Fits container */
+  width: 100%;
+  /* ✅ Fits container */
   height: 3em;
-  resize:none;
+  resize: none;
   padding-left: 1em;
   padding-top: .75em;
   padding-bottom: .5em;
   padding-right: 1em;
   color: hsl(0, 0%, 70%);
   font-size: 1em;
-  box-sizing: border-box; /* ✅ Includes padding in width */
+  box-sizing: border-box;
+  /* ✅ Includes padding in width */
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+.todo-lists {
+  background-color: hsla(0, 0%, 15%, 0.2);
+  backdrop-filter: blur(4px);
+  border: 0.5px solid hsla(0, 0%, 80%, 0.2);
+  border-radius: 5px;
+  width: 97.5%;
+  /* ✅ Fits container */
+  height: 3em;
+  padding-left: 1em;
+  padding-top: .75em;
+  padding-bottom: .5em;
+  padding-right: 1em;
+  color: hsl(0, 0%, 80%);
+  font-size: 1em;
+  box-sizing: border-box;
+  /* ✅ Includes padding in width */
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-bottom: 1.5em;
+}
+
+/* Hide native checkbox */
+.custom-checkbox input.Todo-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom circular checkbox */
+.custom-checkbox .checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid hsla(0, 0%, 80%, 0.2);
+  border-radius: 50%; /* circle */
+  position: relative;
+  vertical-align: middle;
+  margin-right: 8px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  background-color: transparent;
+}
+
+/* Checkmark (tick) */
+.custom-checkbox input.Todo-checkbox:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Hide checkmark when unchecked */
+.custom-checkbox .checkmark::after {
+  display: none;
+}
