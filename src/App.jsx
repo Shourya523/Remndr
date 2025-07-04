@@ -38,6 +38,14 @@ function App() {
       handleAddTask();
     }
   }
+  const handleSubmit = () => {
+    handleAddTask();
+  }
+  const deleteTask = (indexToDelete) => {
+  const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
+  setTasks(updatedTasks);
+};
+
   const handleKeyDownPopUp = (e) => {
     if (e.key === "Enter") {
       e.preventDefault(); // prevent new line
@@ -71,7 +79,9 @@ function App() {
         onTyping={handleTyping}
         onKeyDown={handleKeyDown}
         tasks={tasks}
-        toggleTask={toggleTask} />
+        toggleTask={toggleTask}
+        onClick={handleSubmit}
+        deleteTask={deleteTask} />
     </>
 
   )

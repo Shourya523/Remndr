@@ -210,6 +210,21 @@ textarea {
   /* ✅ Includes padding in width */
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
+.add-task
+{
+  z-index: 2;
+  width: 2em;
+  height: 2em;
+  position: fixed;
+  right: 4em;
+  bottom: 3.2em;
+  border: 0px ;
+  background-color: transparent;
+  background-image: url('./assets/submit-icon.svg');
+  background-size: cover;
+  filter: opacity(80%);
+  cursor: pointer;
+}
 
 .todo-lists {
   background-color: hsla(0, 0%, 15%, 0.2);
@@ -231,6 +246,28 @@ textarea {
   /* margin-bottom: 1em; */
   margin-top: 1em;
   margin-bottom: 1em;
+}
+.delete-task
+{
+  width: 1.75em;
+  height: 1.75em;
+  position: absolute;
+  right: 1.75em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  border: none;
+  background-color: transparent;
+  background-image: url("./assets/trash-icon.svg");
+  background-size: cover;
+  display: none;
+  opacity: 80%;
+}
+.todo-lists:hover .delete-task
+{
+  display: inline;
+}
+.delete-task:hover{
+  cursor: pointer;
 }
 .Main-body-task
 {

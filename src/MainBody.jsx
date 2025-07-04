@@ -1,4 +1,4 @@
-function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask,greetings }) {
+function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask,greetings, onClick, deleteTask }) {
 
     return (
         <div className="main-body">
@@ -9,7 +9,8 @@ function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask,greetings
                     value={task}
                     onChange={onTyping}
                     onKeyDown={onKeyDown}
-                />
+                /> <button className="add-task"
+                onClick={onClick}></button>
             </div>
 
             <div className="task-list-scrollable">
@@ -27,7 +28,7 @@ function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask,greetings
                                 />
                                 <span className="checkmark"></span>
                                 <span style={{ color: t.completed ? 'hsl(0 0% 60%)' : 'inherit', textDecoration: t.completed ? "line-through" : "none" }}>
-                                    {t.text}
+                                    {t.text} <button className="delete-task" onClick={()=>deleteTask(i)}></button>
                                 </span>
 
                             </label>
