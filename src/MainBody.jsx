@@ -2,7 +2,7 @@ function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask, greeting
 
     return (
         <div className="main-body">
-            <h2>{greetings}  {name} !</h2>
+            <h2>{greetings}  {name}!</h2>
             <div className="profile-picture"></div>
             <div className="main-body-input">
                 <textarea
