@@ -11,102 +11,135 @@ import bg5 from './assets/to-do-body-background-5.jpg';
 import bg6 from './assets/to-do-body-background-6.jpg';
 
 
+
 function App() {
   const [name, setName] = useState("");
   const [popup, setPopup] = useState(true);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [greeting, setGreeting] = useState('');
-  useEffect(() => {
-    const photos = [bg1, bg2, bg3, bg4, bg5, bg6];
-    const randomIndex = Math.floor(Math.random() * photos.length);
-    const randomPhoto = photos[randomIndex];
-
-    // Set as body background
-    document.body.style.backgroundImage = `url(${randomPhoto})`;
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundRepeat = "no-repeat";
-
-    // Cleanup on unmount
-    return () => {
-      document.body.style.backgroundImage = null;
-    };
-  }, []);
-
-  const greetings = () => {
-    const hour = new Date().getHours(); // 0–23
-    if (hour < 12 && hour>2) setGreeting('Good Morning');
-    else if (hour < 16) setGreeting('Good Afternoon');
-    else if (hour < 20) setGreeting('Good Evening');
-    else setGreeting('Good Night');
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
+  const addTime = (e) => {
+    if (time === "") return;
+    else { setTime(e.target.value) };
   };
-
-  useEffect(() => {
-    greetings(); // Call it when component loads
-  }, []);
-  const handleTyping = (e) => {
-    setTask(e.target.value);
-  };
-
-  const handleAddTask = () => {
+  const OnAddTask = () => {
     if (task.trim() === "") return;
-    setTasks([...tasks, { text: task, completed: false }]);
-    setTask(""); // clear input
+
+    setTasks([...tasks, {
+      text: task,
+      completed: false,
+      time: time || null,
+      date: date || null
+    }]);
+
+    setTask("");
+    setTime("");
+    setDate("");
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // prevent new line
-      handleAddTask();
-    }
+useEffect(() => {
+  const photos = [bg1, bg2, bg3, bg4, bg5, bg6];
+  const randomIndex = Math.floor(Math.random() * photos.length);
+  const randomPhoto = photos[randomIndex];
+  document.body.style.backgroundImage = `url(${randomPhoto})`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundRepeat = "no-repeat";
+  return () => {
+    document.body.style.backgroundImage = null;
+  };
+}, []);
+
+const greetings = () => {
+  const hour = new Date().getHours();
+  if (hour < 12 && hour > 2) setGreeting('Good Morning');
+  else if (hour < 16) setGreeting('Good Afternoon');
+  else if (hour < 20) setGreeting('Good Evening');
+  else setGreeting('Good Night');
+};
+
+useEffect(() => {
+  greetings();
+}, []);
+const handleTyping = (e) => {
+  setTask(e.target.value);
+};
+
+const handleAddTask = () => {
+  if (task.trim() === "") return;
+  setTasks([...tasks, { text: task, completed: false }]);
+  setTask("");
+};
+
+const handleKeyDown = (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    if (task.trim() === "") return;
+    setTasks([...tasks, {
+      text: task,
+      completed: false,
+      time: time || null,
+      date: date || null,
+    }]);
+    setTask("");
+    setTime("");
+    setDate("");
   }
-  const handleSubmit = () => {
-    handleAddTask();
+};
+const handleSubmit = () => {
+  handleAddTask();
+}
+const deleteTask = (indexToDelete) => {
+  const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
+  setTasks(updatedTasks);
+};
+
+const handleKeyDownPopUp = (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    setPopup(false);
   }
-  const deleteTask = (indexToDelete) => {
-    const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
-    setTasks(updatedTasks);
-  };
+};
+const toggleTask = (index) => {
+  setTasks((prevTasks) =>
+    prevTasks.map((task, i) =>
+      i === index ? { ...task, completed: !task.completed } : task
+    )
+  );
+};
 
-  const handleKeyDownPopUp = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // prevent new line
-      setPopup(false);
-    }
-  };
-  const toggleTask = (index) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task, i) =>
-        i === index ? { ...task, completed: !task.completed } : task
-      )
-    );
-  };
+return (
+  <>
+    {popup && (
+      <PopUp
+        onClose={() => setPopup(false)}
+        onTypingName={(e) => setName(e.target.value)}
+        onKeyDown={handleKeyDownPopUp}
+      />
+    )}
+    <div className="sidebar-bg">
+      <Sidebar name={name} tasks={tasks} />
+    </div>
+    <MainBody
+      greetings={greeting}
+      name={name}
+      task={task}
+      onTyping={handleTyping}
+      onKeyDown={handleKeyDown}
+      tasks={tasks}
+      toggleTask={toggleTask}
+      OnAddTask={OnAddTask}
+      deleteTask={deleteTask}
+      time={time}
+      setTime={setTime}
+      date={date}
+      setDate={setDate}
+    />
 
-  return (
-    <>
-      {popup && (
-        <PopUp
-          onClose={() => setPopup(false)}
-          onTypingName={(e) => setName(e.target.value)}
-          onKeyDown={handleKeyDownPopUp}
-        />
-      )}
-      <div className="sidebar-bg">
-        <Sidebar name={name} tasks={tasks} />
-      </div>
-      <MainBody
-        greetings={greeting}
-        name={name}
-        task={task}
-        onTyping={handleTyping}
-        onKeyDown={handleKeyDown}
-        tasks={tasks}
-        toggleTask={toggleTask}
-        onClick={handleSubmit}
-        deleteTask={deleteTask} />
-    </>
+  </>
 
-  )
+)
 }
 
 export default App

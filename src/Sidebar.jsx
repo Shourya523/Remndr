@@ -12,7 +12,7 @@ function Sidebar({tasks,name})
                     <ul className='To-do-items'>
                     {tasks.map((t,i)=>(
                         <li key={i} className='Sidebar-list'>
-                            {t.text}
+                            {t.text}{t.date && <span className="date-text"> {t.date}</span>}
                         </li>
                     ))}
                 </ul>

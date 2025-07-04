@@ -80,6 +80,19 @@ h1 {
   text-align: center;
   margin-bottom: .5em;
 }
+.profile-picture
+{
+  width: 3em;
+  height: 3em;
+  border: 1px solid hsl(0 0 30);
+  border-radius:50%;
+  position: fixed;
+  right: 2em;
+  top: 1.25em;
+  /* background-color: hsl(0 0 25); */
+  background-image: url('./assets/contacts-alt-svgrepo-com.svg');
+  background-size:contain;
+}
 
 .sidebar {
   /* display: flex; */
@@ -211,6 +224,90 @@ textarea {
   box-sizing: border-box;
   /* ✅ Includes padding in width */
   font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.date
+{
+  position: fixed;
+  height: 2em;
+  width: 2em;
+  border: none;
+  z-index: 2;
+  right: 8em;
+  bottom: 3.2em;
+  background-color: transparent;
+  opacity: 0;
+
+}
+.date-and-time::webkit-calendar-picker-indicator{
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.custom-date-icon
+{
+  background-image: url('./assets/calendar-small-svgrepo-com.svg');
+  background-size: cover;
+  position: fixed;
+  height: 2.3em;
+  width: 2em;
+  border: none;
+  z-index: 2;
+  right: 6em;
+  bottom: 2.45em;
+  opacity: 85%;
+  background-color: transparent;
+  pointer-events: none;
+}
+.time
+{
+  position: fixed;
+  height: 2em;
+  width: 2em;
+  border: none;
+  z-index: 2;
+  right: 10.75em;
+  bottom: 3.2em;
+  background-color: transparent;
+  opacity: 0;
+}
+.time-text-mb
+{
+  color: hsl(0 0 55);
+  font-size: .8em;
+  position: fixed;
+  right: 6em;
+  padding-top: .2em;
+}
+.date-text-mb
+{
+  color: hsl(0 0 55);
+  font-size: .8em;
+  position: fixed;
+  right: 10em;
+}
+.date-text
+{
+  color: hsl(0 0 40);
+  font-size: .75em;
+  position: auto;
+  padding-left: 2em;
+  padding-top: .4em;
+
+}
+.custom-clock
+{
+  background-image: url('./assets/clock-circle.svg');
+  background-size: cover;
+  position: fixed;
+  height: 2em;
+  width: 2em;
+  border: none;
+  z-index: 2;
+  right: 8.5em;
+  bottom: 2.5em;
+  opacity: 85%;
+  background-color: transparent;
+  pointer-events: none;
 }
 .add-task
 {
