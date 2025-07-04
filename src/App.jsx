@@ -3,6 +3,13 @@ import './index.css'
 import Sidebar from './Sidebar'
 import MainBody from './MainBody'
 import PopUp from './PopUp'
+import bg1 from './assets/to-do-body-background.jpg';
+import bg2 from './assets/to-do-body-background-2.jpg';
+import bg3 from './assets/to-do-body-background-3.jpg';
+import bg4 from './assets/to-do-body-background-4.jpg';
+import bg5 from './assets/to-do-body-background-5.jpg';
+import bg6 from './assets/to-do-body-background-6.jpg';
+
 
 function App() {
   const [name, setName] = useState("");
@@ -10,6 +17,21 @@ function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [greeting, setGreeting] = useState('');
+  useEffect(() => {
+    const photos = [bg1, bg2, bg3, bg4, bg5, bg6];
+    const randomIndex = Math.floor(Math.random() * photos.length);
+    const randomPhoto = photos[randomIndex];
+
+    // Set as body background
+    document.body.style.backgroundImage = `url(${randomPhoto})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundRepeat = "no-repeat";
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.backgroundImage = null;
+    };
+  }, []);
 
   const greetings = () => {
     const hour = new Date().getHours(); // 0–23
@@ -42,9 +64,9 @@ function App() {
     handleAddTask();
   }
   const deleteTask = (indexToDelete) => {
-  const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
-  setTasks(updatedTasks);
-};
+    const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
+    setTasks(updatedTasks);
+  };
 
   const handleKeyDownPopUp = (e) => {
     if (e.key === "Enter") {

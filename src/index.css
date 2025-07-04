@@ -10,7 +10,7 @@ body {
 .pop-up {
   color: hsl(0 0 80);
   background-color: hsla(0 0 90 0.5);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(7px);
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -30,13 +30,13 @@ body {
   height: auto;
   max-height: 80vh;
   padding: 2em;
-  background: hsla(0 0 60 0.2);
+  background: hsla(0, 0%, 15%, 0.5);
   /* semi-transparent glassy */
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   color: white;
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  z-index: 1000;
+  z-index: 5;
   overflow-y: auto;
   /* allows scroll if content exceeds height */
   box-sizing: border-box;
@@ -87,8 +87,8 @@ h1 {
   /* padding-left: 1em;
   padding-right: 1em; */
   /* align-content: space-evenly; */
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: opacity(10px);
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blue(10px);
   overflow: hidden;
   position: fixed;
   height: 100vh;
@@ -103,7 +103,7 @@ h1 {
 .task-columns
 {
   background-color: hsla(0, 0%, 10%, 0.2);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
   border: 0.5px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 5px;
   height: 76.5vh;
@@ -121,6 +121,7 @@ h1 {
   white-space: normal;      
   word-wrap: break-word;    
   overflow-wrap: break-word;
+  
 }
 .Task-list
 {
@@ -178,6 +179,7 @@ ul {
 }
 h2 {
   color: hsl(0 0 70);
+  text-shadow: 2px 2px 3px hsla(0, 0%, 0%,0.5);
 }
 
 .main-body-input {
@@ -323,6 +325,6 @@ textarea {
 hr{
   height: 1px;
   border: none;
-  background-color: hsl(0 0 30);
+  background-color: hsl(0 0 50);
   margin-top: 0em;
 }
