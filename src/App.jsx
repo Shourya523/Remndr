@@ -35,7 +35,7 @@ function App() {
 
   const greetings = () => {
     const hour = new Date().getHours(); // 0–23
-    if (hour < 12) setGreeting('Good Morning');
+    if (hour < 12 && hour>2) setGreeting('Good Morning');
     else if (hour < 16) setGreeting('Good Afternoon');
     else if (hour < 20) setGreeting('Good Evening');
     else setGreeting('Good Night');
