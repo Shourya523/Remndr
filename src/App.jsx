@@ -53,10 +53,16 @@ useEffect(() => {
 
 const greetings = () => {
   const hour = new Date().getHours();
-  if (hour < 12 && hour > 2) setGreeting('Good Morning');
-  else if (hour < 16) setGreeting('Good Afternoon');
-  else if (hour < 20) setGreeting('Good Evening');
-  else setGreeting('Good Night');
+ if (hour >= 5 && hour < 12) {
+  setGreeting('Good Morning');
+} else if (hour >= 12 && hour < 16) {
+  setGreeting('Good Afternoon');
+} else if (hour >= 16 && hour < 20) {
+  setGreeting('Good Evening');
+} else {
+  setGreeting('Good Night');
+}
+
 };
 
 useEffect(() => {
