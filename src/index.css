@@ -284,6 +284,7 @@ textarea {
   font-size: .8em;
   position: fixed;
   right: 10em;
+  padding-top: .2em;
 }
 .date-text
 {
