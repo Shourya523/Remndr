@@ -60,7 +60,7 @@ const greetings = () => {
 } else if (hour >= 16 && hour < 20) {
   setGreeting('Good Evening');
 } else {
-  setGreeting('Good Night');
+  setGreeting('Hello');
 }
 
 };
