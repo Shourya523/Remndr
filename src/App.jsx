@@ -20,14 +20,38 @@ function App() {
   const [greeting, setGreeting] = useState('');
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
-  const[displayText,setDisplayText]=useState(false);
-  const[text,setText]=useState('Plus Jakarta Sans');
-  const changeText=(fontname)=>{
-    setText(fontname);
-    document.body.style.fontFamily=`"${fontname}"`;
+  const [displayText, setDisplayText] = useState(false);
+  const [displayColor, setDisplayColor] = useState(false);
+  const [text, setText] = useState('Plus Jakarta Sans');
+  const [color, setColor] = useState('#b3b3b3');
+  const [editIndex, setEditIndex] = useState(null);
+  const [editText, setEditText] = useState("");
+
+  const startEdit = (i, text) => {
+    setEditIndex(i);
+    setEditText(text);
+  };
+
+  const saveEdit = (i) => {
+    if (editText.trim() === "") return;
+    const updatedTasks = [...tasks];
+    updatedTasks[i].text = editText;
+    setTasks(updatedTasks);
+    setEditIndex(null);
+    setEditText("");
+  };
+  const toggleColorOptions = () => {
+    setDisplayColor(!displayColor);
   }
-  const textDropdown=()=>
-  {
+  const changeColor = (colorCode) => {
+    setColor(colorCode);
+    document.querySelector('.todo-lists').style.color = colorCode;
+  }
+  const changeText = (fontname) => {
+    setText(fontname);
+    document.body.style.fontFamily = `"${fontname}"`;
+  }
+  const textDropdown = () => {
     setDisplayText(!displayText);
   }
   const addTime = (e) => {
@@ -49,116 +73,124 @@ function App() {
     setDate("");
   };
 
-useEffect(() => {
-  const photos = [bg1, bg2, bg3, bg4, bg5, bg6];
-  const randomIndex = Math.floor(Math.random() * photos.length);
-  const randomPhoto = photos[randomIndex];
-  document.body.style.backgroundImage = `url(${randomPhoto})`;
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundRepeat = "no-repeat";
-  return () => {
-    document.body.style.backgroundImage = null;
+  useEffect(() => {
+    const photos = [bg1, bg2, bg3, bg4, bg5, bg6];
+    const randomIndex = Math.floor(Math.random() * photos.length);
+    const randomPhoto = photos[randomIndex];
+    document.body.style.backgroundImage = `url(${randomPhoto})`;
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundRepeat = "no-repeat";
+    return () => {
+      document.body.style.backgroundImage = null;
+    };
+  }, []);
+
+  const greetings = () => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) {
+      setGreeting('Good Morning');
+    } else if (hour >= 12 && hour < 16) {
+      setGreeting('Good Afternoon');
+    } else if (hour >= 16 && hour < 20) {
+      setGreeting('Good Evening');
+    } else {
+      setGreeting('Hello');
+    }
+
   };
-}, []);
 
-const greetings = () => {
-  const hour = new Date().getHours();
- if (hour >= 5 && hour < 12) {
-  setGreeting('Good Morning');
-} else if (hour >= 12 && hour < 16) {
-  setGreeting('Good Afternoon');
-} else if (hour >= 16 && hour < 20) {
-  setGreeting('Good Evening');
-} else {
-  setGreeting('Hello');
-}
+  useEffect(() => {
+    greetings();
+  }, []);
+  const handleTyping = (e) => {
+    setTask(e.target.value);
+  };
 
-};
-
-useEffect(() => {
-  greetings();
-}, []);
-const handleTyping = (e) => {
-  setTask(e.target.value);
-};
-
-const handleAddTask = () => {
-  if (task.trim() === "") return;
-  setTasks([...tasks, { text: task, completed: false }]);
-  setTask("");
-};
-
-const handleKeyDown = (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
+  const handleAddTask = () => {
     if (task.trim() === "") return;
-    setTasks([...tasks, {
-      text: task,
-      completed: false,
-      time: time || null,
-      date: date || null,
-    }]);
+    setTasks([...tasks, { text: task, completed: false }]);
     setTask("");
-    setTime("");
-    setDate("");
-  }
-};
-const handleSubmit = () => {
-  handleAddTask();
-}
-const deleteTask = (indexToDelete) => {
-  const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
-  setTasks(updatedTasks);
-};
+  };
 
-const handleKeyDownPopUp = (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    setPopup(false);
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (task.trim() === "") return;
+      setTasks([...tasks, {
+        text: task,
+        completed: false,
+        time: time || null,
+        date: date || null,
+      }]);
+      setTask("");
+      setTime("");
+      setDate("");
+    }
+  };
+  const handleSubmit = () => {
+    handleAddTask();
   }
-};
-const toggleTask = (index) => {
-  setTasks((prevTasks) =>
-    prevTasks.map((task, i) =>
-      i === index ? { ...task, completed: !task.completed } : task
-    )
-  );
-};
+  const deleteTask = (indexToDelete) => {
+    const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
+    setTasks(updatedTasks);
+  };
 
-return (
-  <>
-    {popup && (
-      <PopUp
-        onClose={() => setPopup(false)}
-        onTypingName={(e) => setName(e.target.value)}
-        onKeyDown={handleKeyDownPopUp}
+  const handleKeyDownPopUp = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      setPopup(false);
+    }
+  };
+  const toggleTask = (index) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task, i) =>
+        i === index ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
+  return (
+    <>
+      {popup && (
+        <PopUp
+          onClose={() => setPopup(false)}
+          onTypingName={(e) => setName(e.target.value)}
+          onKeyDown={handleKeyDownPopUp}
+        />
+      )}
+      <div className="sidebar-bg">
+        <Sidebar name={name} tasks={tasks} />
+      </div>
+      <MainBody
+        greetings={greeting}
+        name={name}
+        task={task}
+        onTyping={handleTyping}
+        onKeyDown={handleKeyDown}
+        tasks={tasks}
+        toggleTask={toggleTask}
+        OnAddTask={OnAddTask}
+        deleteTask={deleteTask}
+        time={time}
+        setTime={setTime}
+        date={date}
+        setDate={setDate}
+        textDropdown={textDropdown}
+        displayText={displayText}
+        changeText={changeText}
+        changeColor={changeColor}
+        displayColor={displayColor}
+        toggleColorOptions={toggleColorOptions}
+        editIndex={editIndex}
+        editText={editText}
+        setEditText={setEditText}
+        startEdit={startEdit}
+        saveEdit={saveEdit}
       />
-    )}
-    <div className="sidebar-bg">
-      <Sidebar name={name} tasks={tasks} />
-    </div>
-    <MainBody
-      greetings={greeting}
-      name={name}
-      task={task}
-      onTyping={handleTyping}
-      onKeyDown={handleKeyDown}
-      tasks={tasks}
-      toggleTask={toggleTask}
-      OnAddTask={OnAddTask}
-      deleteTask={deleteTask}
-      time={time}
-      setTime={setTime}
-      date={date}
-      setDate={setDate}
-      textDropdown={textDropdown}
-      displayText={displayText}
-      changeText={changeText}
-    />
 
-  </>
+    </>
 
-)
+  )
 }
 
 export default App
