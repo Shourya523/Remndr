@@ -1,6 +1,7 @@
 {
   "name": "to-do-app",
   "private": true,
+  "homepage": "https://Shourya523.github.io/Remndr",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
