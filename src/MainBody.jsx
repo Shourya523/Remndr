@@ -76,12 +76,12 @@ function MainBody({
             Fredoka
           </button>
           <button
-            className="Gloria-text"
+            className="Caveat-text"
             onClick={() => {
-              changeText("Gloria Hallelujah");
+              changeText("Caveat");
             }}
           >
-            Gloria
+            Caveat
           </button>
         </ul>
       )}
