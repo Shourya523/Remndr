@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
   background: linear-gradient(45deg, hsl(0 0 5), hsl(0 0 10), hsl(0 0 25));
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -80,11 +80,80 @@ h1 {
   text-align: center;
   margin-bottom: .5em;
 }
+.text-options
+{
+  color: hsl(0 0 60);
+  font-size: 2em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  width: 1em;
+  height: 1em;
+  position: fixed;
+  right: 4em;
+  top:.65em; 
+  background-color: transparent;
+  border: none; 
+  z-index: 2;
+  cursor: pointer;
+}
+.text-list
+{
+  color: hsl(0 0 40);
+  width: 5.5em;
+  height: 7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  position: fixed;
+  right: 5.5em;
+  top:3.5em;
+  z-index: 1;
+  white-space:normal;
+  word-wrap: break-word;    
+  overflow-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px);
+  border: .5px solid rgba(153, 153, 153,0.4);
+  border-radius: 5px;
+}
+.Default-text
+{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: transparent;
+  border: none;
+  color: hsl(0 0 40);
+  cursor: pointer;
+}
+.Poppins-text
+{
+  font-family: 'Poppins', sans-serif;
+  background-color: transparent;
+  border: none;
+  color: hsl(0 0 40);
+  cursor: pointer;
+}
+.Consolas-text
+{
+  font-family: 'Consolas', monospace;
+  background-color: transparent;
+  border: none;
+  color: hsl(0 0 40);
+  cursor: pointer;
+}
+.Montserrat-text
+{
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  border: none;
+  color: hsl(0 0 40);
+  padding-bottom: .25em;
+  cursor: pointer;
+}
 .profile-picture
 {
   width: 3em;
   height: 3em;
-  border: 1px solid hsl(0 0 30);
+  border: 0px solid hsl(0 0 30);
   border-radius:50%;
   position: fixed;
   right: 2em;
@@ -101,7 +170,7 @@ h1 {
   padding-right: 1em; */
   /* align-content: space-evenly; */
   background-color: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blue(10px);
+  backdrop-filter: blur(6px);
   overflow: hidden;
   position: fixed;
   height: 100vh;
@@ -342,7 +411,7 @@ textarea {
   font-size: 1em;
   box-sizing: border-box;
   /* ✅ Includes padding in width */
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  /* font-family: 'Plus Jakarta Sans', sans-serif; */
   /* margin-bottom: 1em; */
   margin-top: 1em;
   margin-bottom: 1em;

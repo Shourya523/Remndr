@@ -20,6 +20,28 @@ function App() {
   const [greeting, setGreeting] = useState('');
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
+  const[displayText,setDisplayText]=useState(false);
+  const[text,setText]=useState('Plus Jakarta Sans');
+  const textToPoppins=()=>{
+    setText('Poppins');
+    document.body.style.fontFamily="Poppins";
+  }
+  const textToPlus=()=>{
+    setText('Plus Jakarta Sans');
+    document.body.style.fontFamily="Plus Jakarta Sans";
+  }
+  const textToConsolas=()=>{
+    setText('Consolas');
+    document.body.style.fontFamily="Consolas";
+  }
+  const textToMontserrat=()=>{
+    setText('Montserrat');
+    document.body.style.fontFamily="Montserrat";
+  }
+  const textDropdown=()=>
+  {
+    setDisplayText(!displayText);
+  }
   const addTime = (e) => {
     if (time === "") return;
     else { setTime(e.target.value) };
@@ -141,6 +163,12 @@ return (
       setTime={setTime}
       date={date}
       setDate={setDate}
+      textDropdown={textDropdown}
+      displayText={displayText}
+      textToPoppins={textToPoppins}
+      textToPlus={textToPlus}
+      textToConsolas={textToConsolas}
+      textToMontserrat={textToMontserrat}
     />
 
   </>

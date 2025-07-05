@@ -1,8 +1,15 @@
-function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask, greetings, deleteTask, OnAddTask, time, setTime, date, setDate }) {
+function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask, greetings, deleteTask, OnAddTask, time, setTime, date, setDate, textDropdown,displayText,textToPoppins,textToPlus,textToConsolas,textToMontserrat }) {
 
     return (
         <div className="main-body">
             <h2>{greetings}  {name}!</h2>
+            <button className="text-options" onClick={textDropdown}>Aa</button>
+            {displayText && (<ul className="text-list">
+                <button className="Default-text" onClick={textToPlus}>Default</button>
+                <button className="Poppins-text" onClick={textToPoppins}>Poppins</button>
+                <button className="Consolas-text" onClick={textToConsolas}>Consolas</button>
+                <button className="Montserrat-text" onClick={textToMontserrat}>Monsterrat</button>
+            </ul>)}
             <div className="profile-picture"></div>
             <div className="main-body-input">
                 <textarea
