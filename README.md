@@ -19,7 +19,7 @@ Features dynamic greetings based on the time of day, smooth task management with
 
 ## 🔗 Demo
 
-[https://shourya523.github.io/to-do-app/](https://shourya523.github.io/to-do-app/)
+[https://shourya523.github.io/to-do-app/](https://shourya523.github.io/Remndr/)
 
 ---
 
