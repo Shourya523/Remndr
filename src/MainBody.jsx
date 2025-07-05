@@ -1,14 +1,16 @@
-function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask, greetings, deleteTask, OnAddTask, time, setTime, date, setDate, textDropdown,displayText,textToPoppins,textToPlus,textToConsolas,textToMontserrat }) {
+function MainBody({ name, task, onTyping, onKeyDown, tasks, toggleTask, greetings, deleteTask, OnAddTask, time, setTime, date, setDate, textDropdown,displayText,changeText }) {
 
     return (
         <div className="main-body">
             <h2>{greetings}  {name}!</h2>
             <button className="text-options" onClick={textDropdown}>Aa</button>
             {displayText && (<ul className="text-list">
-                <button className="Default-text" onClick={textToPlus}>Default</button>
-                <button className="Poppins-text" onClick={textToPoppins}>Poppins</button>
-                <button className="Consolas-text" onClick={textToConsolas}>Consolas</button>
-                <button className="Montserrat-text" onClick={textToMontserrat}>Monsterrat</button>
+                <button className="Default-text" onClick={()=>{changeText('Plus Jakarta Sans')}}>Default</button>
+                <button className="Poppins-text" onClick={()=>{changeText('Poppins')}}>Poppins</button>
+                <button className="Consolas-text" onClick={()=>{changeText('Consolas')}}>Consolas</button>
+                <button className="Montserrat-text" onClick={()=>{changeText('Montserrat')}}>Monsterrat</button>
+                <button className="Fredoka-text" onClick={()=>{changeText('Fredoka One')}}>Fredoka</button>
+                <button className="Gloria-text" onClick={()=>{changeText('Gloria Hallelujah')}}>Gloria</button>
             </ul>)}
             <div className="profile-picture"></div>
             <div className="main-body-input">

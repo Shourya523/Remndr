@@ -22,21 +22,9 @@ function App() {
   const [date, setDate] = useState('');
   const[displayText,setDisplayText]=useState(false);
   const[text,setText]=useState('Plus Jakarta Sans');
-  const textToPoppins=()=>{
-    setText('Poppins');
-    document.body.style.fontFamily="Poppins";
-  }
-  const textToPlus=()=>{
-    setText('Plus Jakarta Sans');
-    document.body.style.fontFamily="Plus Jakarta Sans";
-  }
-  const textToConsolas=()=>{
-    setText('Consolas');
-    document.body.style.fontFamily="Consolas";
-  }
-  const textToMontserrat=()=>{
-    setText('Montserrat');
-    document.body.style.fontFamily="Montserrat";
+  const changeText=(fontname)=>{
+    setText(fontname);
+    document.body.style.fontFamily=`"${fontname}"`;
   }
   const textDropdown=()=>
   {
@@ -165,10 +153,7 @@ return (
       setDate={setDate}
       textDropdown={textDropdown}
       displayText={displayText}
-      textToPoppins={textToPoppins}
-      textToPlus={textToPlus}
-      textToConsolas={textToConsolas}
-      textToMontserrat={textToMontserrat}
+      changeText={changeText}
     />
 
   </>
