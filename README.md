@@ -1,4 +1,4 @@
-# 🚀 To-Do App
+# 🚀 Remndr (A To-Do App)
 
 A sleek and user-friendly **To-Do List** app built with **React**.  
 Features dynamic greetings based on the time of day, smooth task management with checkboxes, and a modern dark gradient background for a pleasant user experience.
@@ -19,7 +19,7 @@ Features dynamic greetings based on the time of day, smooth task management with
 
 ## 🔗 Demo
 
-[https://shourya523.github.io/to-do-app/](https://shourya523.github.io/to-do-app/)
+[https://shourya523.github.io/Remndr/](https://shourya523.github.io/Remndr/)
 
 ---
 
