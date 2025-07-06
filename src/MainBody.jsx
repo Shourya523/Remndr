@@ -23,6 +23,14 @@ function MainBody({
   setEditText,
   startEdit,
   saveEdit,
+  subtaskInputs,
+  setSubtaskInputs,
+  addSubtask,
+  toggleSubtask,
+  buttonaddtask,
+  buttonEditSubtask,
+  showSubtaskList,
+  showSubtask
 }) {
   return (
     <div className="main-body">
@@ -35,54 +43,12 @@ function MainBody({
       </button>
       {displayText && (
         <ul className="text-list">
-          <button
-            className="Default-text"
-            onClick={() => {
-              changeText("Plus Jakarta Sans");
-            }}
-          >
-            Default
-          </button>
-          <button
-            className="Poppins-text"
-            onClick={() => {
-              changeText("Poppins");
-            }}
-          >
-            Poppins
-          </button>
-          <button
-            className="Consolas-text"
-            onClick={() => {
-              changeText("Consolas");
-            }}
-          >
-            Consolas
-          </button>
-          <button
-            className="Montserrat-text"
-            onClick={() => {
-              changeText("Montserrat");
-            }}
-          >
-            Montserrat
-          </button>
-          <button
-            className="Fredoka-text"
-            onClick={() => {
-              changeText("Fredoka One");
-            }}
-          >
-            Fredoka
-          </button>
-          <button
-            className="Caveat-text"
-            onClick={() => {
-              changeText("Caveat");
-            }}
-          >
-            Caveat
-          </button>
+          <button className="Default-text" onClick={() => changeText("Plus Jakarta Sans")}>Default</button>
+          <button className="Poppins-text" onClick={() => changeText("Poppins")}>Poppins</button>
+          <button className="Consolas-text" onClick={() => changeText("Consolas")}>Consolas</button>
+          <button className="Montserrat-text" onClick={() => changeText("Montserrat")}>Montserrat</button>
+          <button className="Fredoka-text" onClick={() => changeText("Fredoka One")}>Fredoka</button>
+          <button className="Caveat-text" onClick={() => changeText("Caveat")}>Caveat</button>
         </ul>
       )}
 
@@ -95,31 +61,16 @@ function MainBody({
           onChange={onTyping}
           onKeyDown={onKeyDown}
         />
-        <button className="color-options" onClick={toggleColorOptions}>
-          <u>A</u>
-        </button>
+        <button className="color-options" onClick={toggleColorOptions}><u>A</u></button>
+
         {displayColor && (
           <ul className="color-palette">
-            <button
-              className="green-color"
-              onClick={() => {
-                changeColor("#98bf71");
-              }}
-            ></button>
-            <button
-              className="yellow-color"
-              onClick={() => {
-                changeColor("#ffbb00");
-              }}
-            ></button>
-            <button
-              className="default-color"
-              onClick={() => {
-                changeColor("#b3b3b3");
-              }}
-            ></button>
+            <button className="green-color" onClick={() => changeColor("#98bf71")}></button>
+            <button className="yellow-color" onClick={() => changeColor("#ffbb00")}></button>
+            <button className="default-color" onClick={() => changeColor("#b3b3b3")}></button>
           </ul>
         )}
+
         <input
           type="time"
           className="time"
@@ -127,6 +78,7 @@ function MainBody({
           onChange={(e) => setTime(e.target.value)}
         />
         <div className="custom-clock"></div>
+
         <input
           type="date"
           className="date"
@@ -134,6 +86,7 @@ function MainBody({
           onChange={(e) => setDate(e.target.value)}
         />
         <div className="custom-date-icon"></div>
+
         <button className="add-task" onClick={OnAddTask}></button>
       </div>
 
@@ -164,36 +117,72 @@ function MainBody({
                       }}
                       autoFocus
                       style={{
-                        color: t.completed
-                          ? "hsl(0 0% 60%)"
-                          : "inherit",
-                        textDecoration: t.completed
-                          ? "line-through"
-                          : "none",
+                        color: t.completed ? "hsl(0 0% 60%)" : "inherit",
+                        textDecoration: t.completed ? "line-through" : "none",
                       }}
                     />
                   ) : (
                     <span
                       style={{
-                        color: t.completed
-                          ? "hsl(0 0% 60%)"
-                          : "inherit",
-                        textDecoration: t.completed
-                          ? "line-through"
-                          : "none",
+                        color: t.completed ? "hsl(0 0% 60%)" : "inherit",
+                        textDecoration: t.completed ? "line-through" : "none",
                       }}
                       onDoubleClick={() => startEdit(i, t.text)}
                     >
-                      {t.text}{" "}
+                      {t.text}
                       {t.time && <span className="time-text-mb"> {t.time}</span>}
                       {t.date && <span className="date-text-mb"> {t.date}</span>}
-                      <button
-                        className="delete-task"
-                        onClick={() => deleteTask(i)}
-                      ></button>
+                      <button className="show-subtask" onClick={showSubtaskList}></button>
+                      <button onClick={buttonaddtask} className="button-addsubtask">+</button>
+                      <button className="delete-task" onClick={() => deleteTask(i)}></button>
                     </span>
                   )}
                 </label>
+
+                {/* ---------- Subtask List ---------- */}
+                {t.subtasks && (
+                  <ul className="subtask-ul">
+                    {showSubtask && (
+                      <ul className="subtask-ul">
+                        {t.subtasks.map((sub, j) => (
+                          <li key={j} id="subtasks">
+                            <input
+                              type="checkbox"
+                              checked={sub.completed}
+                              onChange={() => toggleSubtask(i, j)}
+                            />
+                            <span
+                              style={{
+                                textDecoration: sub.completed ? "line-through" : "none",
+                                color: sub.completed ? "gray" : "inherit",
+                              }}
+                            >
+                              {sub.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                  </ul>
+                )}
+
+                {/* ---------- Subtask Input ---------- */}
+                <div className="subtask-input">
+                  {buttonEditSubtask &&
+                    (<input
+                      className="input-subtask"
+                      type="text"
+                      placeholder="Add subtask"
+                      value={subtaskInputs[i] || ""}
+                      onChange={(e) =>
+                        setSubtaskInputs({ ...subtaskInputs, [i]: e.target.value })
+                      }
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") addSubtask(i);
+                      }}
+                    />)}
+                </div>
               </li>
             ))}
           </ul>

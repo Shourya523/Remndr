@@ -342,6 +342,7 @@ ul {
   z-index: -1;
   overflow-y: scroll;
   height: 77.5vh;
+  overflow-x: hidden;
 }
 .task-list-scrollable::-webkit-scrollbar
 {
@@ -496,21 +497,14 @@ textarea {
   border: 0.5px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 5px;
   width: 97.5%;
-  /* ✅ Fits container */
-  height: 3em;
-  padding-left: 1em;
-  padding-top: .75em;
-  padding-bottom: .5em;
-  padding-right: 1em;
+  padding: 0.75em 1em 0.5em 1em;
   color: hsl(0, 0%, 80%);
   font-size: 1em;
   box-sizing: border-box;
-  /* ✅ Includes padding in width */
-  /* font-family: 'Plus Jakarta Sans', sans-serif; */
-  /* margin-bottom: 1em; */
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1em 0;
+  /* 🔥 height removed */
 }
+
 .delete-task
 {
   width: 1.75em;
@@ -526,9 +520,23 @@ textarea {
   display: none;
   opacity: 80%;
 }
-.todo-lists:hover .delete-task
+.todo-lists:hover .delete-task 
 {
   display: inline;
+}
+.todo-lists:hover .button-addsubtask
+{
+  display: inline;
+}
+.todo-lists:hover .show-subtask
+{
+  display: inline;
+}
+.button-addsubtask:hover{
+  cursor: pointer;
+}
+.show-subtask:hover{
+  cursor: pointer;
 }
 .delete-task:hover{
   cursor: pointer;
@@ -576,6 +584,78 @@ textarea {
 /* Hide checkmark when unchecked */
 .custom-checkbox .checkmark::after {
   display: none;
+}
+.subtask-ul {
+  margin-top: 1em;
+  margin-left: 0;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
+  width: 98.5%; /* ✅ Let it fit inside the parent */
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5em;
+  font-size: 0.8em;
+}
+
+#subtasks
+{
+  background-color: hsla(0, 0%, 15%, 0.3);
+  backdrop-filter: blur(4px);
+  border: 0.5px solid hsla(0, 0%, 80%, 0.2);
+  border-radius: 5px;
+  padding: 0.75em 0em .75em 1em;
+  /* width: 100%; */
+  color: hsl(0, 0%, 75%);
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+}
+.button-addsubtask
+{
+  background-color: transparent;
+  border: none;
+  color: hsl(0, 0%, 80%);
+  font-size: 1.75em;
+  position: fixed;
+  right: 2em;
+  top: 0em;
+  font-family: 'Plus Jakarta Sans';
+  display: none;
+}
+.show-subtask
+{
+  height: 1.1em;
+  width: 1.1em;
+  background-color: transparent;
+  border: none;
+  color: hsl(0, 0%, 80%);
+  font-size: 1.75em;
+  position: fixed;
+  right: 3.2em;
+  top: .275em;
+  background-image: url('./assets/add-subtask.svg');
+  background-size: cover;
+  display: none;
+}
+.input-subtask
+{
+  background-color: hsla(0, 0%, 15%, 0.3);
+  backdrop-filter: blur(4px);
+  border: 0.5px solid hsla(0, 0%, 80%, 0.2);
+  border-radius: 5px;
+  padding: 1em 0em .75em 1em;
+  width: 75.7em;
+  color: hsl(0, 0%, 75%);
+  position: subtask;
+  margin-top: .5em;
+  margin-left: .5em;
+}
+.checkbox-subtask
+{
+  border: none;
 }
 .no-task-message {
   color: hsl(0, 0%, 60%);

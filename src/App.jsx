@@ -1,16 +1,14 @@
-import { useEffect, useState } from 'react'
-import './index.css'
-import Sidebar from './Sidebar'
-import MainBody from './MainBody'
-import PopUp from './PopUp'
+import { useEffect, useState } from 'react';
+import './index.css';
+import Sidebar from './Sidebar';
+import MainBody from './MainBody';
+import PopUp from './PopUp';
 import bg1 from './assets/to-do-body-background.jpg';
 import bg2 from './assets/to-do-body-background-2.jpg';
 import bg3 from './assets/to-do-body-background-3.jpg';
 import bg4 from './assets/to-do-body-background-4.jpg';
 import bg5 from './assets/to-do-body-background-5.jpg';
 import bg6 from './assets/to-do-body-background-6.jpg';
-
-
 
 function App() {
   const [name, setName] = useState("");
@@ -26,6 +24,17 @@ function App() {
   const [color, setColor] = useState('#b3b3b3');
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState("");
+  const [subtaskInputs, setSubtaskInputs] = useState({});
+  const[buttonEditSubtask,setbuttonEditSubtask]=useState(false);
+  const[showSubtask,setShowSubtask]=useState(true);
+  const showSubtaskList=()=>
+  {
+    setShowSubtask(!showSubtask);
+  }
+  const buttonaddtask=()=>
+  {
+    setbuttonEditSubtask(!buttonEditSubtask);
+  }
 
   const startEdit = (i, text) => {
     setEditIndex(i);
@@ -40,37 +49,60 @@ function App() {
     setEditIndex(null);
     setEditText("");
   };
+
   const toggleColorOptions = () => {
     setDisplayColor(!displayColor);
-  }
+  };
+
   const changeColor = (colorCode) => {
     setColor(colorCode);
     document.querySelector('.todo-lists').style.color = colorCode;
-  }
+  };
+
   const changeText = (fontname) => {
     setText(fontname);
     document.body.style.fontFamily = `"${fontname}"`;
-  }
+  };
+
   const textDropdown = () => {
     setDisplayText(!displayText);
-  }
-  const addTime = (e) => {
-    if (time === "") return;
-    else { setTime(e.target.value) };
   };
+
   const OnAddTask = () => {
     if (task.trim() === "") return;
 
-    setTasks([...tasks, {
-      text: task,
-      completed: false,
-      time: time || null,
-      date: date || null
-    }]);
+    setTasks([
+      ...tasks,
+      {
+        text: task,
+        completed: false,
+        time: time || null,
+        date: date || null,
+        subtasks: []
+      }
+    ]);
 
     setTask("");
     setTime("");
     setDate("");
+  };
+
+  const addSubtask = (taskIndex) => {
+    const input = subtaskInputs[taskIndex];
+    if (!input || input.trim() === "") return;
+
+    const updatedTasks = [...tasks];
+    updatedTasks[taskIndex].subtasks.push({ text: input.trim(), completed: false });
+    setTasks(updatedTasks);
+
+    setSubtaskInputs({ ...subtaskInputs, [taskIndex]: "" });
+  };
+
+  const toggleSubtask = (taskIndex, subtaskIndex) => {
+    const updatedTasks = [...tasks];
+    const subtask = updatedTasks[taskIndex].subtasks[subtaskIndex];
+    subtask.completed = !subtask.completed;
+    setTasks(updatedTasks);
   };
 
   useEffect(() => {
@@ -96,43 +128,34 @@ function App() {
     } else {
       setGreeting('Hello');
     }
-
   };
 
   useEffect(() => {
     greetings();
   }, []);
+
   const handleTyping = (e) => {
     setTask(e.target.value);
-  };
-
-  const handleAddTask = () => {
-    if (task.trim() === "") return;
-    setTasks([...tasks, { text: task, completed: false }]);
-    setTask("");
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       if (task.trim() === "") return;
-      setTasks([...tasks, {
-        text: task,
-        completed: false,
-        time: time || null,
-        date: date || null,
-      }]);
+      setTasks([
+        ...tasks,
+        {
+          text: task,
+          completed: false,
+          time: time || null,
+          date: date || null,
+          subtasks: []
+        }
+      ]);
       setTask("");
       setTime("");
       setDate("");
     }
-  };
-  const handleSubmit = () => {
-    handleAddTask();
-  }
-  const deleteTask = (indexToDelete) => {
-    const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
-    setTasks(updatedTasks);
   };
 
   const handleKeyDownPopUp = (e) => {
@@ -141,6 +164,12 @@ function App() {
       setPopup(false);
     }
   };
+
+  const deleteTask = (indexToDelete) => {
+    const updatedTasks = tasks.filter((_, i) => i !== indexToDelete);
+    setTasks(updatedTasks);
+  };
+
   const toggleTask = (index) => {
     setTasks((prevTasks) =>
       prevTasks.map((task, i) =>
@@ -186,11 +215,17 @@ function App() {
         setEditText={setEditText}
         startEdit={startEdit}
         saveEdit={saveEdit}
+        subtaskInputs={subtaskInputs}
+        setSubtaskInputs={setSubtaskInputs}
+        addSubtask={addSubtask}
+        toggleSubtask={toggleSubtask}
+        buttonEditSubtask={buttonEditSubtask}
+        buttonaddtask={buttonaddtask}
+        showSubtaskList={showSubtaskList}
+        showSubtask={showSubtask}
       />
-
     </>
-
-  )
+  );
 }
 
-export default App
+export default App;
