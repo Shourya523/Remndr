@@ -589,7 +589,7 @@ textarea {
   margin-top: 1em;
   margin-left: 0;
   background-color: transparent;
-  backdrop-filter: blur(4px);
+  /* backdrop-filter: blur(4px); */
   border-radius: 5px;
   width: 98.5%; /* ✅ Let it fit inside the parent */
   z-index: 0;
@@ -598,6 +598,7 @@ textarea {
   justify-content: space-evenly;
   gap: 0.5em;
   font-size: 0.8em;
+  /* padding-bottom:.25em ; */
 }
 
 #subtasks
@@ -612,6 +613,7 @@ textarea {
   display: flex;
   align-items: center;
   font-size: 1.2em;
+  margin-bottom: .25em;
 }
 .button-addsubtask
 {
