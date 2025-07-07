@@ -13,37 +13,34 @@ import bg6 from './assets/to-do-body-background-6.jpg';
 
 function App() {
   //take name input and store it into localStorage
-  const [name, setName] = useState(()=>
-  {
-    const item=getItems('name');
-    return item||"";
+  const [name, setName] = useState(() => {
+    const item = getItems('name');
+    return item || "";
   });
-  useEffect(()=>{
-    setItems('name',name);
-  },[name])
+  useEffect(() => {
+    setItems('name', name);
+  }, [name])
   //check whether name is stored or not, then show popup
-const [popup, setPopup] = useState(() => {
-  const storedPopup = getItems('popup');
-  const storedName = getItems('name');
-  // Show popup if name is missing
-  if (!storedName || storedName.trim() === '') return true;
-  return storedPopup !== null ? storedPopup : true;
-});
-useEffect(() => {
-  setItems('popup', popup);
-}, [popup]);
+  const [popup, setPopup] = useState(() => {
+    const storedPopup = getItems('popup');
+    const storedName = getItems('name');
+    // Show popup if name is missing
+    if (!storedName || storedName.trim() === '') return true;
+    return storedPopup !== null ? storedPopup : true;
+  });
+  useEffect(() => {
+    setItems('popup', popup);
+  }, [popup]);
 
   //store tasks
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState(()=>
-  {
-    const item=getItems('tasks');
-    return item||[];
+  const [tasks, setTasks] = useState(() => {
+    const item = getItems('tasks');
+    return item || [];
   });
-  useEffect(()=>
-  {
-    setItems('tasks',tasks);
-  },[tasks])
+  useEffect(() => {
+    setItems('tasks', tasks);
+  }, [tasks])
   const [greeting, setGreeting] = useState('');
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
@@ -54,14 +51,12 @@ useEffect(() => {
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState("");
   const [subtaskInputs, setSubtaskInputs] = useState({});
-  const[buttonEditSubtask,setbuttonEditSubtask]=useState(false);
-  const[showSubtask,setShowSubtask]=useState(true);
-  const showSubtaskList=()=>
-  {
+  const [buttonEditSubtask, setbuttonEditSubtask] = useState(false);
+  const [showSubtask, setShowSubtask] = useState(true);
+  const showSubtaskList = () => {
     setShowSubtask(!showSubtask);
   }
-  const buttonaddtask=()=>
-  {
+  const buttonaddtask = () => {
     setbuttonEditSubtask(!buttonEditSubtask);
   }
 
