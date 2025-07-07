@@ -497,29 +497,39 @@ textarea {
   border: 0.5px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 5px;
   width: 97.5%;
-  padding: 0.75em 1em 0.75em 1em;
+  padding: 0.75em 8em 0.75em 1em;
+  overflow-y: auto;
+  overflow-x: hidden;
   color: hsl(0, 0%, 80%);
   font-size: 1em;
   box-sizing: border-box;
   margin: 1em 0;
+  word-wrap: break-word;         
+  overflow-wrap: break-word;      
+  white-space: normal; 
   /* 🔥 height removed */
 }
 
-.delete-task
-{
+.delete-task {
   width: 1.75em;
   height: 1.75em;
   position: absolute;
   right: 1.75em;
-  padding-top: 0em;
-  padding-bottom: 0em;
+  top: 0.75em; /* or adjust as needed */
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  vertical-align: middle;
   border: none;
   background-color: transparent;
   background-image: url("./assets/trash-icon.svg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: none;
   opacity: 80%;
 }
+
 .todo-lists:hover .delete-task 
 {
   display: inline;
@@ -623,14 +633,16 @@ textarea {
   font-size: 1.75em;
   position: fixed;
   right: 2em;
-  top: 0em;
+  top: .1em;
   font-family: 'Plus Jakarta Sans';
   display: none;
+  line-height: .9;
+  vertical-align: middle;
 }
 .show-subtask
 {
-  height: 1.1em;
-  width: 1.1em;
+  height: 1em;
+  width: 1em;
   background-color: transparent;
   border: none;
   color: hsl(0, 0%, 80%);
