@@ -22,13 +22,18 @@ function App() {
     setItems('name',name);
   },[name])
   //check whether name is stored or not, then show popup
-   const [popup, setPopup] = useState(() => {
-    const item = getItems('popup');
-    return item !== null ? item : true; // default to true if not found
-  });
-  useEffect(() => {
-    setItems('popup', popup);
-  }, [popup]);
+const [popup, setPopup] = useState(() => {
+  const storedPopup = getItems('popup');
+  const storedName = getItems('name');
+  // Show popup if name is missing
+  if (!storedName || storedName.trim() === '') return true;
+  return storedPopup !== null ? storedPopup : true;
+});
+useEffect(() => {
+  setItems('popup', popup);
+}, [popup]);
+
+  //store tasks
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState(()=>
   {
