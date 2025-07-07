@@ -60,8 +60,14 @@ function App() {
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState("");
   const [subtaskInputs, setSubtaskInputs] = useState({});
-  const [buttonEditSubtask, setbuttonEditSubtask] = useState(false);
-  const [showSubtask, setShowSubtask] = useState(true);
+  const [buttonEditSubtask, setbuttonEditSubtask] = useState({});
+  const [showSubtask, setShowSubtask] = useState({});
+  const buttonaddSubtask = (taskIndex) => {
+    setbuttonEditSubtask(prev => ({
+      ...prev,
+      [taskIndex]: !prev[taskIndex],
+    }));
+  };
   const showSubtaskList = () => {
     setShowSubtask(!showSubtask);
   }
@@ -136,6 +142,13 @@ function App() {
     subtask.completed = !subtask.completed;
     setTasks(updatedTasks);
   };
+  const toggleShowSubtask = (i) => {
+    setShowSubtask(prev => ({
+      ...prev,
+      [i]: !prev[i],   // toggle visibility for this task only
+    }));
+  };
+
 
   useEffect(() => {
     const photos = [bg1, bg2, bg3, bg4, bg5, bg6];
@@ -255,6 +268,8 @@ function App() {
         buttonaddtask={buttonaddtask}
         showSubtaskList={showSubtaskList}
         showSubtask={showSubtask}
+        toggleShowSubtask={toggleShowSubtask}
+        buttonaddSubtask={buttonaddSubtask}
       />
     </>
   );

@@ -27,10 +27,11 @@ function MainBody({
   setSubtaskInputs,
   addSubtask,
   toggleSubtask,
+  toggleShowSubtask,
   buttonaddtask,
   buttonEditSubtask,
-  showSubtaskList,
-  showSubtask
+  showSubtask,
+  buttonaddSubtask
 }) {
   return (
     <div className="main-body">
@@ -132,44 +133,40 @@ function MainBody({
                       {t.text}
                       {t.time && <span className="time-text-mb"> {t.time}</span>}
                       {t.date && <span className="date-text-mb"> {t.date}</span>}
-                      <button className="show-subtask" onClick={showSubtaskList}></button>
-                      <button onClick={buttonaddtask} className="button-addsubtask">+</button>
+                      <button className="show-subtask" onClick={() => toggleShowSubtask(i)}></button>
+                      <button onClick={()=>buttonaddSubtask(i)} className="button-addsubtask">+</button>
                       <button className="delete-task" onClick={() => deleteTask(i)}></button>
                     </span>
                   )}
                 </label>
 
-                {/* ---------- Subtask List ---------- */}
-                {t.subtasks && (
+                {t.subtasks && showSubtask[i] && (
                   <ul className="subtask-ul">
-                    {showSubtask && (
-                      <ul className="subtask-ul">
-                        {t.subtasks.map((sub, j) => (
-                          <li key={j} id="subtasks">
-                            <input
-                              type="checkbox"
-                              checked={sub.completed}
-                              onChange={() => toggleSubtask(i, j)}
-                            />
-                            <span
-                              style={{
-                                textDecoration: sub.completed ? "line-through" : "none",
-                                color: sub.completed ? "gray" : "inherit",
-                              }}
-                            >
-                              {sub.text}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
+                    {t.subtasks.map((sub, j) => (
+                      <li key={j} id="subtasks">
+                        <input
+                          type="checkbox"
+                          checked={sub.completed}
+                          onChange={() => toggleSubtask(i, j)}
+                        />
+                        <span
+                          style={{
+                            textDecoration: sub.completed ? "line-through" : "none",
+                            color: sub.completed ? "gray" : "inherit",
+                          }}
+                        >
+                          {sub.text}
+                        </span>
+                      </li>
+                    ))}
                   </ul>
                 )}
 
+
+
                 {/* ---------- Subtask Input ---------- */}
                 <div className="subtask-input">
-                  {buttonEditSubtask &&
+                  {buttonEditSubtask[i] &&
                     (<input
                       className="input-subtask"
                       type="text"
