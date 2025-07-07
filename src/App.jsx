@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './index.css';
+import { setItems, getItems } from './utils/localStorage';
 import Sidebar from './Sidebar';
 import MainBody from './MainBody';
 import PopUp from './PopUp';
@@ -11,10 +12,33 @@ import bg5 from './assets/to-do-body-background-5.jpg';
 import bg6 from './assets/to-do-body-background-6.jpg';
 
 function App() {
-  const [name, setName] = useState("");
-  const [popup, setPopup] = useState(true);
+  //take name input and store it into localStorage
+  const [name, setName] = useState(()=>
+  {
+    const item=getItems('name');
+    return item||"";
+  });
+  useEffect(()=>{
+    setItems('name',name);
+  },[name])
+  //check whether name is stored or not, then show popup
+   const [popup, setPopup] = useState(() => {
+    const item = getItems('popup');
+    return item !== null ? item : true; // default to true if not found
+  });
+  useEffect(() => {
+    setItems('popup', popup);
+  }, [popup]);
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(()=>
+  {
+    const item=getItems('tasks');
+    return item||[];
+  });
+  useEffect(()=>
+  {
+    setItems('tasks',tasks);
+  },[tasks])
   const [greeting, setGreeting] = useState('');
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
