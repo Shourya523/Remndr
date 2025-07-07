@@ -46,7 +46,16 @@ function App() {
   const [date, setDate] = useState('');
   const [displayText, setDisplayText] = useState(false);
   const [displayColor, setDisplayColor] = useState(false);
-  const [text, setText] = useState('Plus Jakarta Sans');
+  const [text, setText] = useState(() => {
+    const item = getItems('text');
+    return item || 'Plus Jakarta Sans';
+  });
+  useEffect(() => {
+    setItems('text', text);
+    document.body.style.fontFamily = `"${text}"`;
+  }, [text]);
+
+
   const [color, setColor] = useState('#b3b3b3');
   const [editIndex, setEditIndex] = useState(null);
   const [editText, setEditText] = useState("");
@@ -114,7 +123,6 @@ function App() {
   const addSubtask = (taskIndex) => {
     const input = subtaskInputs[taskIndex];
     if (!input || input.trim() === "") return;
-
     const updatedTasks = [...tasks];
     updatedTasks[taskIndex].subtasks.push({ text: input.trim(), completed: false });
     setTasks(updatedTasks);
