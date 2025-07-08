@@ -497,7 +497,7 @@ textarea {
   border: 0.5px solid hsla(0, 0%, 80%, 0.2);
   border-radius: 5px;
   width: 97.5%;
-  padding: 0.75em 8em 0.75em 1em;
+  padding: 0.75em 0.75em 0.75em 1em;
   overflow-y: auto;
   overflow-x: hidden;
   color: hsl(0, 0%, 80%);
